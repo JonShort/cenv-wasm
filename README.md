@@ -19,3 +19,6 @@ wasm-pack build --target nodejs
 ```
 3. Check the `pkg/` folder - this is the compiled wasm
 4. Once built run `node index.js` and check everything is working as expected
+
+## In action!
+![image](https://user-images.githubusercontent.com/21317379/117722925-a0479f00-b1d9-11eb-928f-d33d0bd5f4ea.png)
