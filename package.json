@@ -1,3 +1,33 @@
 {
-  "type": "module"
+  "name": "@jonshort/cenv",
+  "version": "0.0.2",
+  "description": "Completely unnecessary port of cenv internals to node via. wasm",
+  "main": "index.js",
+  "bin": {
+    "cenv": "index.js"
+  },
+  "type": "commonjs",
+  "engines": {
+    "node": ">=14"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "index.js",
+    "pkg/cenv_wasm_bg.wasm",
+    "pkg/cenv_wasm.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonShort/cenv-wasm.git"
+  },
+  "author": "JonShort <JonShort@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonShort/cenv-wasm/issues"
+  },
+  "homepage": "https://github.com/JonShort/cenv-wasm#readme"
 }

@@ -8,7 +8,40 @@ End goal would be for users to be able to install globally e.g. `npm i -g @jonsh
 
 It's not a straightforward swap; the big change is making `parse_env` accept two strings instead of structs - mostly just because it'd be a pain to instantiate a Config and EnvContents in JS-land. It is possible, but a bit cleaner just using the strings (for now).
 
-## How to build this
+## Usage
+
+1. Add the "cenv" pattern to your .env file
+```.env
+VARIABLE_1=something
+
+# ++ local ++
+# API_ADDRESS=http://localhost:5000
+# REQUIRE_LOGIN=false
+
+# ++ live ++
+# API_ADDRESS=https://myliveapi.com
+# REQUIRE_LOGIN=true
+```
+
+2. Run cenv, choosing an env keyword to use
+```bash
+cenv live
+```
+
+3. Check your .env, the keyworded env vars will now be uncommented
+```.env
+VARIABLE_1=something
+
+# ++ local ++
+# API_ADDRESS=http://localhost:5000
+# REQUIRE_LOGIN=false
+
+# ++ live ++
+API_ADDRESS=https://myliveapi.com
+REQUIRE_LOGIN=true
+```
+
+## How to build the internals
 1. Install `wasm-pack`
 ```bash
 cargo install wasm-pack
