@@ -40,10 +40,11 @@ pub fn resolve_keyword(line: &str) -> Option<String> {
 }
 
 #[wasm_bindgen]
-pub fn parse_env(contents: String, keyword: String) -> String {
+pub fn parse_env(contents: String, keyword: String) -> Result<String, JsValue> {
     let lines = contents.lines();
 
     let mut parse_status = ParseStatus::Ignore;
+    let mut keyword_found = false;
 
     let collected = lines.map(|line| {
         if line.is_empty() {
@@ -53,6 +54,7 @@ pub fn parse_env(contents: String, keyword: String) -> String {
 
         if let Some(line_keyword) = resolve_keyword(line) {
             if line_keyword == keyword {
+                keyword_found = true;
                 parse_status = ParseStatus::Active;
                 return String::from(line);
             } else {
@@ -73,5 +75,11 @@ pub fn parse_env(contents: String, keyword: String) -> String {
     // Ensure we have an end-of-file newline
     let collected = collected + "\n";
 
-    collected
+    match keyword_found {
+        true => Ok(collected),
+        false => Err(JsValue::from(format!(
+            "keyword \"{}\" was not found in .env file",
+            keyword
+        ))),
+    }
 }

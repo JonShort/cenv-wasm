@@ -23,7 +23,17 @@ const main = async () => {
     process.exit(1);
   }
 
-  await writeFile(FILE, parse_env(currentEnv, providedKeyword)).catch(logFsErrorAndExit)
+  let newEnv;
+  try {
+    newEnv = parse_env(currentEnv, providedKeyword)
+  } catch (err) {
+    console.log("\x1b[31m%s\x1b[0m", "[Error] - Error while running");
+    console.log("\x1b[31m%s\x1b[0m", " |", "Failed with the following error:");
+    console.log("\x1b[31m%s\x1b[0m", " |", err);
+    process.exit(1);
+  }
+
+  await writeFile(FILE, newEnv).catch(logFsErrorAndExit)
 
   console.log("Updated", FILE, "to", providedKeyword);
   process.exit(0);
