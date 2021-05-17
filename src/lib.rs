@@ -1,7 +1,7 @@
 use regex::Regex;
 use wasm_bindgen::prelude::*;
 mod utils;
-use utils::ParseStatus;
+use utils::{Config, EnvContents, ParseStatus};
 #[macro_use(lazy_static)]
 extern crate lazy_static;
 
@@ -39,9 +39,8 @@ pub fn resolve_keyword(line: &str) -> Option<String> {
     Some(String::from(keyword))
 }
 
-#[wasm_bindgen]
-pub fn parse_env(contents: String, keyword: String) -> Result<String, JsValue> {
-    let lines = contents.lines();
+pub fn parse_env(env: &EnvContents, config: &Config) -> Result<EnvContents, String> {
+    let lines = env.contents.lines();
 
     let mut parse_status = ParseStatus::Ignore;
     let mut keyword_found = false;
@@ -52,8 +51,8 @@ pub fn parse_env(contents: String, keyword: String) -> Result<String, JsValue> {
             return String::from(line);
         }
 
-        if let Some(line_keyword) = resolve_keyword(line) {
-            if line_keyword == keyword {
+        if let Some(keyword) = resolve_keyword(line) {
+            if keyword == config.keyword {
                 keyword_found = true;
                 parse_status = ParseStatus::Active;
                 return String::from(line);
@@ -76,10 +75,42 @@ pub fn parse_env(contents: String, keyword: String) -> Result<String, JsValue> {
     let collected = collected + "\n";
 
     match keyword_found {
-        true => Ok(collected),
-        false => Err(JsValue::from(format!(
+        true => Ok(EnvContents::new(collected)),
+        false => Err(format!(
             "keyword \"{}\" was not found in .env file",
-            keyword
-        ))),
+            config.keyword
+        )),
     }
+}
+
+#[wasm_bindgen]
+pub fn main(keyword: &str) -> Result<(), JsValue> {
+    let config = match Config::new(keyword) {
+        Ok(c) => c,
+        Err(e) => {
+            return Err(JsValue::from(e));
+        }
+    };
+    let env = match utils::read_env_file() {
+        Ok(d) => d,
+        Err(e) => {
+            return Err(JsValue::from(e));
+        }
+    };
+
+    let new_env = match parse_env(&env, &config) {
+        Ok(env) => env,
+        Err(e) => {
+            return Err(JsValue::from(e));
+        }
+    };
+
+    match utils::write_to_file(&new_env) {
+        Ok(_) => utils::log(&format!("Updated .env to {}", &config.keyword)),
+        Err(e) => {
+            return Err(JsValue::from(e));
+        }
+    }
+
+    Ok(())
 }
