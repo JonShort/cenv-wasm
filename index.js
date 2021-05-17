@@ -8,7 +8,7 @@ const logErrorAndExit = (err, description = "Failed with the following error:") 
   process.exit(1);
 };
 
-const jsMain = async () => {
+const jsMain = () => {
   const providedKeyword = process.argv[2];
 
   if (!providedKeyword) {
