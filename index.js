@@ -9,7 +9,7 @@ const logErrorAndExit = (err) => {
 };
 
 try {
-  newEnv = main()
+  main()
   process.exit(0);
 } catch (err) {
   logErrorAndExit(err);
