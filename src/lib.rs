@@ -84,8 +84,15 @@ pub fn parse_env(env: &EnvContents, config: &Config) -> Result<EnvContents, Stri
 }
 
 #[wasm_bindgen]
-pub fn main(keyword: &str) -> Result<(), JsValue> {
-    let config = match Config::new(keyword) {
+pub fn main() -> Result<(), JsValue> {
+    let keyword = match utils::get_keyword() {
+        Ok(k) => k,
+        Err(e) => {
+            return Err(JsValue::from(e));
+        }
+    };
+
+    let config = match Config::new(&keyword) {
         Ok(c) => c,
         Err(e) => {
             return Err(JsValue::from(e));
