@@ -18,7 +18,8 @@
   "files": [
     "index.js",
     "pkg/cenv_wasm_bg.wasm",
-    "pkg/cenv_wasm.js"
+    "pkg/cenv_wasm.js",
+    "pkg/snippets/*"
   ],
   "repository": {
     "type": "git",
