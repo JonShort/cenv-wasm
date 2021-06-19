@@ -8,9 +8,8 @@ edition = "2018"
 crate-type = ["cdylib"]
 
 [dependencies]
-lazy_static = "1.4"
-regex = "1.4"
 wasm-bindgen = "0.2"
+cenv_core = "0.1.0"
 
 wee_alloc = { version = "0.4.2", optional = true }
 
