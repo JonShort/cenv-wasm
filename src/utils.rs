@@ -1,40 +1,5 @@
+use cenv_core::EnvContents;
 use wasm_bindgen::prelude::*;
-
-#[derive(PartialEq)]
-pub enum ParseStatus {
-    Active,
-    Inactive,
-    Ignore,
-}
-
-#[derive(PartialEq, Debug)]
-pub struct Config {
-    pub keyword: String,
-}
-
-impl Config {
-    pub fn new(keyword: &str) -> Result<Config, &'static str> {
-        let keyword = match keyword {
-            "" => return Err("Keyword missing"),
-            word => word,
-        };
-
-        Ok(Config {
-            keyword: String::from(keyword),
-        })
-    }
-}
-
-#[derive(PartialEq, Debug)]
-pub struct EnvContents {
-    pub contents: String,
-}
-
-impl EnvContents {
-    pub fn new(contents: String) -> EnvContents {
-        EnvContents { contents }
-    }
-}
 
 #[wasm_bindgen(module = "fs")]
 extern "C" {
