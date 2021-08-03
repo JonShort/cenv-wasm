@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+Nothing in the pipeline at the moment!
+
+## [0.0.6] - 2021-08-03
 ### Added
 - Available keywords are now listed to the user when invalid or no keyword provided
 
@@ -24,5 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - MVP functionality
 
-[Unreleased]: https://github.com/JonShort/cenv-wasm/compare/v0.0.5...HEAD
+[Unreleased]: https://github.com/JonShort/cenv-wasm/compare/v0.0.6...HEAD
+[0.0.6]: https://github.com/JonShort/cenv-wasm/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/JonShort/cenv-wasm/releases/tag/v0.0.5
