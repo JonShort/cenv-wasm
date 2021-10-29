@@ -2,7 +2,7 @@
 name = "cenv-wasm"
 version = "0.1.0"
 authors = ["JonShort <JonShort@users.noreply.github.com>"]
-edition = "2018"
+edition = "2021"
 
 [lib]
 crate-type = ["cdylib"]
@@ -11,7 +11,7 @@ crate-type = ["cdylib"]
 wasm-bindgen = "0.2"
 cenv_core = "0.2"
 
-wee_alloc = { version = "0.4.2", optional = true }
+wee_alloc = { version = "0.4.5", optional = true }
 
 [profile.release]
 lto = true
