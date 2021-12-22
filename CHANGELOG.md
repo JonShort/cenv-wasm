@@ -33,6 +33,7 @@ Nothing in the pipeline at the moment!
 ### Added
 - MVP functionality
 
-[Unreleased]: https://github.com/JonShort/cenv-wasm/compare/v0.0.6...HEAD
+[Unreleased]: https://github.com/JonShort/cenv-wasm/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/JonShort/cenv-wasm/compare/v0.0.6...v0.1.0
 [0.0.6]: https://github.com/JonShort/cenv-wasm/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/JonShort/cenv-wasm/releases/tag/v0.0.5
