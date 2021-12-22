@@ -1,6 +1,6 @@
 {
   "name": "@jonshort/cenv",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Completely unnecessary port of cenv internals to node via. wasm",
   "main": "index.js",
   "bin": {
