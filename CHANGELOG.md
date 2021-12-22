@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Updated internals to target rust 2021
+- Comments are now valid within "cenv" blocks and will be ignored
+- The keywords listed when an invalid choice is made are now de-deuplicated
 
 ## [0.0.6] - 2021-08-03
 ### Added
