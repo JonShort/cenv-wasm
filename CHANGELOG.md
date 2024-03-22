@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 Nothing in the pipeline at the moment!
 
+## [1.0.1] - 2024-03-22
+### Added
+- Added package publish documentation
+
 ## [1.0.0] - 2024-03-22
 ### Changed
 - [BREAKING] Keyword line formatting is now stricter, e.g. ##++ thing would previously match, now single comment & space are required, e.g. `# ++ thing`
@@ -39,7 +43,8 @@ Nothing in the pipeline at the moment!
 ### Added
 - MVP functionality
 
-[Unreleased]: https://github.com/JonShort/cenv-wasm/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/JonShort/cenv-wasm/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/JonShort/cenv-wasm/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/JonShort/cenv-wasm/compare/v0.1.0...v1.0.0
 [0.1.0]: https://github.com/JonShort/cenv-wasm/compare/v0.0.6...v0.1.0
 [0.0.6]: https://github.com/JonShort/cenv-wasm/compare/v0.0.5...v0.0.6

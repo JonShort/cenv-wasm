@@ -78,3 +78,21 @@ wasm-pack build --target nodejs
 ```
 3. Check the `pkg/` folder - this is the compiled wasm
 4. Once built run `node index.js` and check everything is working as expected
+
+### How to publish the package
+
+1. Build the internals as above
+2. Remove the `.gitignore` file within the `pkg/` folder
+```bash
+rm pkg/.gitignore
+```
+> [!IMPORTANT]
+> The above is extremely important - JS snippets won't be included otherwise
+3. Do a dry-run publish and check the files are as expected
+```bash
+npm publish --dry-run
+```
+4. Publish as normal
+```bash
+npm publish
+```
